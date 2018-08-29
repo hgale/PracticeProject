@@ -8,10 +8,13 @@
 
 import Foundation
 
+import QuartzCore
 import UIKit
 
 class NullStateView: UIView {
-//    fileprivate let iconView = UIView()
+    let iconSize: CGFloat = 90
+    
+    fileprivate let iconView = UIView()
     fileprivate let titleView = UITextView()
     fileprivate let subTitleView = UITextView()
     fileprivate let alertButton = UIButton()
@@ -50,6 +53,13 @@ class NullStateView: UIView {
     }
     
     func setup() {
+        iconView.backgroundColor = .white
+        iconView.layer.cornerRadius = iconSize / 2
+
+        // border
+        iconView.layer.borderColor = UIColor.gray.cgColor
+        iconView.layer.borderWidth = 1.5
+
         titleView.text = title
         titleView.font = UIFont.systemFont(ofSize: 20)
         titleView.textColor = .black
@@ -68,6 +78,7 @@ class NullStateView: UIView {
         alertButton.setTitle(buttonText, for: .normal)
         alertButton.addTarget(self, action: action, for: .touchUpInside)
         
+        addSubview(iconView)
         addSubview(titleView)
         addSubview(subTitleView)
         addSubview(alertButton)
@@ -75,6 +86,7 @@ class NullStateView: UIView {
     }
 
     func setupConstraints() {
+        iconView.translatesAutoresizingMaskIntoConstraints = false
         titleView.translatesAutoresizingMaskIntoConstraints = false
         subTitleView.translatesAutoresizingMaskIntoConstraints = false
         alertButton.translatesAutoresizingMaskIntoConstraints = false
@@ -95,13 +107,19 @@ class NullStateView: UIView {
         // Set height to be same as the buttons, aka, 15% of the screen
         viewConstraints.append(subTitleView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier:0.15))
         
-        // Stack title on top of the view minus a margin
+        // Stack title on top of the subtitle minus a margin
         viewConstraints.append(titleView.bottomAnchor.constraint(equalTo: subTitleView.topAnchor, constant: -margin))
         // Set width to be the width of the screen minus double the margin
         viewConstraints.append(titleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant:(margin * 2)))
         viewConstraints.append(titleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant:(-margin * 2)))
         // Set height to be same as the buttons, aka, 15% of the screen
         viewConstraints.append(titleView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier:0.15))
+        
+        // Stack icon on top of the title minus a margin
+        viewConstraints.append(iconView.bottomAnchor.constraint(equalTo: titleView.topAnchor, constant: -margin))
+        viewConstraints.append(iconView.centerXAnchor.constraint(equalTo: self.centerXAnchor))
+        viewConstraints.append(iconView.heightAnchor.constraint(equalToConstant:iconSize))
+        viewConstraints.append(iconView.widthAnchor.constraint(equalTo: iconView.heightAnchor))
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
