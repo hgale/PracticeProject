@@ -7,43 +7,33 @@
 //
 
 import UIKit
-import QuartzCore
 
 class PriceAlertViewController: UIViewController {
 
-//    private weak var containerView: UIView!
     fileprivate var nullStateView: NullStateView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .red
-//        self.containerView.backgroundColor = .white
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
     }
     
     override func loadView() {
         super.loadView()
 
-        // Create the Null state view.
-        // Image
-        
-        // Title
-        // Subtitle
-        // Button
-        
         let margin : CGFloat = 20
         let screenWidth = UIScreen.main.bounds.width
         nullStateView = NullStateView(title: "Never miss an opportunity",
                                       subTitle: "We'll send you notifications when prices go above or below your targets",
-                                      buttonText: "Create Price Alert",
-                                      action: #selector(self.displayPriceAlert))
+                                      buttonText: "Create Price Alert")
+        nullStateView.delegate = self
         nullStateView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(nullStateView);
+        view.addSubview(nullStateView)
+
         // center screen and set its width/height to be based on screenWidth - margin
         NSLayoutConstraint.activate([
             nullStateView.widthAnchor.constraint(equalToConstant: (screenWidth - margin)),
@@ -53,10 +43,5 @@ class PriceAlertViewController: UIViewController {
         ])
 
     }
-    
-    @objc func displayPriceAlert() {
-        print("Button Clicked")
-    }
-
 }
 

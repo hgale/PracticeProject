@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PracticeProject/PriceAlertViewController.swift"
-            timestampString = "557267555.739026"
+            timestampString = "557267849.2353801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "loadView()"
             landmarkType = "7">
          </BreakpointContent>

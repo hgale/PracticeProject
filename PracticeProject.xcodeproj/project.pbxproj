@@ -11,8 +11,11 @@
 		8B05C6BB21362D9200ABDCEF /* PriceAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6BA21362D9200ABDCEF /* PriceAlertViewController.swift */; };
 		8B05C6C021362D9300ABDCEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B05C6BF21362D9300ABDCEF /* Assets.xcassets */; };
 		8B05C6C321362D9300ABDCEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B05C6C121362D9300ABDCEF /* LaunchScreen.storyboard */; };
-		8B05C6D12136606500ABDCEF /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6D02136606500ABDCEF /* TestView.swift */; };
 		8B05C6D32137196C00ABDCEF /* NullStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6D22137196C00ABDCEF /* NullStateView.swift */; };
+		8B05C6D721373CA600ABDCEF /* PriceAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6D621373CA600ABDCEF /* PriceAlertProtocol.swift */; };
+		8B05C6D921373D2200ABDCEF /* PriceAlertViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6D821373D2200ABDCEF /* PriceAlertViewControllerExtension.swift */; };
+		8B05C6DB21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6DA21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift */; };
+		8B05C6DD213768C500ABDCEF /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6DC213768C500ABDCEF /* PriceCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +25,11 @@
 		8B05C6BF21362D9300ABDCEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B05C6C221362D9300ABDCEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B05C6C421362D9300ABDCEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B05C6D02136606500ABDCEF /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		8B05C6D22137196C00ABDCEF /* NullStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStateView.swift; sourceTree = "<group>"; };
+		8B05C6D621373CA600ABDCEF /* PriceAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAlertProtocol.swift; sourceTree = "<group>"; };
+		8B05C6D821373D2200ABDCEF /* PriceAlertViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAlertViewControllerExtension.swift; sourceTree = "<group>"; };
+		8B05C6DA21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAlertCreatorViewController.swift; sourceTree = "<group>"; };
+		8B05C6DC213768C500ABDCEF /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +62,10 @@
 		8B05C6B721362D9200ABDCEF /* PracticeProject */ = {
 			isa = PBXGroup;
 			children = (
+				8B05C6D521373C8A00ABDCEF /* Protocols */,
+				8B05C6D421373BEB00ABDCEF /* Controllers */,
 				8B05C6CA2136319800ABDCEF /* Views */,
 				8B05C6B821362D9200ABDCEF /* AppDelegate.swift */,
-				8B05C6BA21362D9200ABDCEF /* PriceAlertViewController.swift */,
 				8B05C6BF21362D9300ABDCEF /* Assets.xcassets */,
 				8B05C6C121362D9300ABDCEF /* LaunchScreen.storyboard */,
 				8B05C6C421362D9300ABDCEF /* Info.plist */,
@@ -69,10 +76,28 @@
 		8B05C6CA2136319800ABDCEF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8B05C6D02136606500ABDCEF /* TestView.swift */,
 				8B05C6D22137196C00ABDCEF /* NullStateView.swift */,
+				8B05C6DC213768C500ABDCEF /* PriceCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8B05C6D421373BEB00ABDCEF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8B05C6BA21362D9200ABDCEF /* PriceAlertViewController.swift */,
+				8B05C6D821373D2200ABDCEF /* PriceAlertViewControllerExtension.swift */,
+				8B05C6DA21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8B05C6D521373C8A00ABDCEF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8B05C6D621373CA600ABDCEF /* PriceAlertProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,9 +170,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B05C6D12136606500ABDCEF /* TestView.swift in Sources */,
+				8B05C6DD213768C500ABDCEF /* PriceCollectionViewCell.swift in Sources */,
+				8B05C6DB21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift in Sources */,
+				8B05C6D721373CA600ABDCEF /* PriceAlertProtocol.swift in Sources */,
 				8B05C6BB21362D9200ABDCEF /* PriceAlertViewController.swift in Sources */,
 				8B05C6D32137196C00ABDCEF /* NullStateView.swift in Sources */,
+				8B05C6D921373D2200ABDCEF /* PriceAlertViewControllerExtension.swift in Sources */,
 				8B05C6B921362D9200ABDCEF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

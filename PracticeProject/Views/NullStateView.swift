@@ -14,6 +14,8 @@ import UIKit
 class NullStateView: UIView {
     let iconSize: CGFloat = 90
     
+    var delegate: PriceAlertDelegate?
+    
     fileprivate let iconView = UIView()
     fileprivate let titleView = UITextView()
     fileprivate let subTitleView = UITextView()
@@ -24,14 +26,12 @@ class NullStateView: UIView {
     private let title: String
     private let subTitle: String
     private let buttonText: String
-    private let action: Selector
     
-    init(title: String, subTitle: String, buttonText: String, action: Selector) {
+    init(title: String, subTitle: String, buttonText: String) {
         self.title = title
         self.subTitle = subTitle
         self.buttonText = buttonText
-        self.action = action
-        
+
         super.init(frame: CGRect.zero)
     }
     
@@ -76,7 +76,7 @@ class NullStateView: UIView {
         alertButton.layer.cornerRadius = 5
         alertButton.clipsToBounds = true
         alertButton.setTitle(buttonText, for: .normal)
-        alertButton.addTarget(self, action: action, for: .touchUpInside)
+        alertButton.addTarget(self, action: #selector(self.displayPriceAlert), for: .touchUpInside)
         
         addSubview(iconView)
         addSubview(titleView)
@@ -125,5 +125,9 @@ class NullStateView: UIView {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         NSLayoutConstraint.activate(viewConstraints)
+    }
+
+    @objc func displayPriceAlert() {
+        delegate?.presentPriceAlertCreator()
     }
 }
