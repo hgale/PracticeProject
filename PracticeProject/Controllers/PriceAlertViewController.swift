@@ -24,15 +24,27 @@ class PriceAlertViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        addViews()
+        setupConstraints()
+    }
 
-        let margin : CGFloat = 20
-        let screenWidth = UIScreen.main.bounds.width
+    // MARK:- Add the subviews
+
+    func addViews() {
         nullStateView = NullStateView(title: "Never miss an opportunity",
                                       subTitle: "We'll send you notifications when prices go above or below your targets",
                                       buttonText: "Create Price Alert")
         nullStateView.delegate = self
-        nullStateView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nullStateView)
+    }
+
+    // MARK:- Setup constraints
+
+    func setupConstraints() {
+        nullStateView.translatesAutoresizingMaskIntoConstraints = false
+
+        let margin : CGFloat = 20
+        let screenWidth = UIScreen.main.bounds.width
 
         // center screen and set its width/height to be based on screenWidth - margin
         NSLayoutConstraint.activate([
@@ -41,7 +53,6 @@ class PriceAlertViewController: UIViewController {
             nullStateView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             nullStateView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
         ])
-
     }
 }
 
