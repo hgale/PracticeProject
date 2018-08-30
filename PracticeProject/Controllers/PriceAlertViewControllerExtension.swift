@@ -13,6 +13,7 @@ extension PriceAlertViewController: PriceAlertDelegate {
     func presentPriceAlertCreator() {
         let priceAlertVC = PriceAlertCreatorViewController()
         priceAlertVC.currentPrice = 7045
+        priceAlertVC.priceIncrement = 10
         priceAlertVC.modalPresentationStyle = .overCurrentContext
         priceAlertVC.delegate = self
         self.present(priceAlertVC, animated: false, completion: nil)

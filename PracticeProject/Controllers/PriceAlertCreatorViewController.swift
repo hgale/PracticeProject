@@ -16,9 +16,11 @@ class PriceAlertCreatorViewController: UIViewController  {
     fileprivate let containerView = UIView()
     fileprivate let dismissButton = UIButton()
     fileprivate let createButton = UIButton()
-    fileprivate let currentPriceView = UILabel()
+    let currentPriceView = UILabel()
 
+    var selectedPrice: Int = 0
     var currentPrice: Int = 0
+    var priceIncrement: Int = 5
     
     fileprivate let collectionView =  UICollectionView(frame: .zero , collectionViewLayout: UICollectionViewFlowLayout())
     

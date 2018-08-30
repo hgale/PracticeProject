@@ -9,7 +9,13 @@
 import UIKit
 
 extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-        
+
+    // MARK:- Utility
+    func calculatePrice(price : Int, inrement: Int, index: Int) -> Int {
+        let cellPrice = price + (index * inrement)
+        return cellPrice
+    }
+
     // MARK:- CollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -20,7 +26,8 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
         let cell: PriceCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                                                for: indexPath) as! PriceCollectionViewCell
         
-        cell.title = "\(indexPath.row)"
+        let cellPrice = calculatePrice(price: currentPrice, inrement: priceIncrement, index: indexPath.row)
+        cell.title = "\(cellPrice)"
         return cell
     }
     
@@ -30,6 +37,10 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected: \(indexPath.row)")
+        let cellPrice = calculatePrice(price: currentPrice, inrement: priceIncrement, index: indexPath.row)
+        // TODO: Make this nicer with a setter
+        selectedPrice = cellPrice
+        currentPriceView.text = String(selectedPrice)
+        print("Selected: \(cellPrice)")
     }
 }
