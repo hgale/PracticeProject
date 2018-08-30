@@ -18,11 +18,11 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
     }
 
     // MARK:- CollectionView
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 24;
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PriceCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                                                for: indexPath) as! PriceCollectionViewCell
@@ -31,7 +31,7 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
         cell.title = "\(cellPrice)"
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = 90
         return CGSize(width:size, height:size)
@@ -50,8 +50,9 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
     @objc func dismissVC() {
         self.dismiss(animated: true, completion:nil)
     }
-    
+
     @objc func createPrice() {
+        self.delegate?.createPriceAlert(price: selectedPrice)
         self.dismiss(animated: true, completion:nil)
     }
 
