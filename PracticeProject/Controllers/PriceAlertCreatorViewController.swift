@@ -22,7 +22,7 @@ class PriceAlertCreatorViewController: UIViewController  {
     fileprivate var viewConstraints = [NSLayoutConstraint]()
     
     var selectedPrice: Int = 0
-    var currentPrice: Int = 0
+    var currentPrice: Float = 0
     var priceIncrement: Int = 5
     
 
@@ -60,7 +60,7 @@ class PriceAlertCreatorViewController: UIViewController  {
         dismissButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         containerView.addSubview(dismissButton)
         
-        currentPriceView.text = String(currentPrice)
+        currentPriceView.text = String(Int(currentPrice))
         currentPriceView.font = UIFont.systemFont(ofSize: 20)
         currentPriceView.textColor = .white
         currentPriceView.textAlignment = .center

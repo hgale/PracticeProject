@@ -12,8 +12,8 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
 
     // MARK:- Utility
 
-    func calculatePrice(price : Int, inrement: Int, index: Int) -> Int {
-        let cellPrice = price + (index * inrement)
+    func calculatePrice(price : Float, increment: Int, index: Int) -> Int {
+        let cellPrice = Int(price) + (index * increment)
         return cellPrice
     }
 
@@ -27,7 +27,7 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
         let cell: PriceCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                                                for: indexPath) as! PriceCollectionViewCell
         
-        let cellPrice = calculatePrice(price: currentPrice, inrement: priceIncrement, index: indexPath.row)
+        let cellPrice = calculatePrice(price: currentPrice, increment: priceIncrement, index: indexPath.row)
         cell.title = "\(cellPrice)"
         return cell
     }
@@ -38,7 +38,7 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cellPrice = calculatePrice(price: currentPrice, inrement: priceIncrement, index: indexPath.row)
+        let cellPrice = calculatePrice(price: currentPrice, increment: priceIncrement, index: indexPath.row)
         // TODO: Make this nicer with a setter
         selectedPrice = cellPrice
         currentPriceView.text = String(selectedPrice)

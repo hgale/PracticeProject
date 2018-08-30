@@ -17,6 +17,8 @@
 		8B05C6DB21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6DA21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift */; };
 		8B05C6DD213768C500ABDCEF /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6DC213768C500ABDCEF /* PriceCollectionViewCell.swift */; };
 		8B05C6DF21377D2000ABDCEF /* PriceAlertCreatorViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6DE21377D2000ABDCEF /* PriceAlertCreatorViewControllerExtension.swift */; };
+		8B05C6E8213887D900ABDCEF /* PriceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6E7213887D900ABDCEF /* PriceAPI.swift */; };
+		8B05C6EE213895A100ABDCEF /* BPIPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6ED213895A100ABDCEF /* BPIPrice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		8B05C6DA21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAlertCreatorViewController.swift; sourceTree = "<group>"; };
 		8B05C6DC213768C500ABDCEF /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B05C6DE21377D2000ABDCEF /* PriceAlertCreatorViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAlertCreatorViewControllerExtension.swift; sourceTree = "<group>"; };
+		8B05C6E7213887D900ABDCEF /* PriceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAPI.swift; sourceTree = "<group>"; };
+		8B05C6ED213895A100ABDCEF /* BPIPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPIPrice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 		8B05C6B721362D9200ABDCEF /* PracticeProject */ = {
 			isa = PBXGroup;
 			children = (
+				8B05C6EC2138959100ABDCEF /* Models */,
+				8B05C6E6213887C600ABDCEF /* API */,
 				8B05C6D521373C8A00ABDCEF /* Protocols */,
 				8B05C6D421373BEB00ABDCEF /* Controllers */,
 				8B05C6CA2136319800ABDCEF /* Views */,
@@ -101,6 +107,22 @@
 				8B05C6D621373CA600ABDCEF /* PriceAlertProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8B05C6E6213887C600ABDCEF /* API */ = {
+			isa = PBXGroup;
+			children = (
+				8B05C6E7213887D900ABDCEF /* PriceAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		8B05C6EC2138959100ABDCEF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8B05C6ED213895A100ABDCEF /* BPIPrice.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,12 +195,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B05C6EE213895A100ABDCEF /* BPIPrice.swift in Sources */,
 				8B05C6DF21377D2000ABDCEF /* PriceAlertCreatorViewControllerExtension.swift in Sources */,
 				8B05C6DD213768C500ABDCEF /* PriceCollectionViewCell.swift in Sources */,
 				8B05C6DB21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift in Sources */,
 				8B05C6D721373CA600ABDCEF /* PriceAlertProtocol.swift in Sources */,
 				8B05C6BB21362D9200ABDCEF /* PriceAlertViewController.swift in Sources */,
 				8B05C6D32137196C00ABDCEF /* NullStateView.swift in Sources */,
+				8B05C6E8213887D900ABDCEF /* PriceAPI.swift in Sources */,
 				8B05C6D921373D2200ABDCEF /* PriceAlertViewControllerExtension.swift in Sources */,
 				8B05C6B921362D9200ABDCEF /* AppDelegate.swift in Sources */,
 			);
