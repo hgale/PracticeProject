@@ -11,6 +11,7 @@ import UIKit
 extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
     // MARK:- Utility
+
     func calculatePrice(price : Int, inrement: Int, index: Int) -> Int {
         let cellPrice = price + (index * inrement)
         return cellPrice
@@ -43,4 +44,15 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
         currentPriceView.text = String(selectedPrice)
         print("Selected: \(cellPrice)")
     }
+
+    // MARK:- Buttons
+
+    @objc func dismissVC() {
+        self.dismiss(animated: true, completion:nil)
+    }
+    
+    @objc func createPrice() {
+        self.dismiss(animated: true, completion:nil)
+    }
+
 }
