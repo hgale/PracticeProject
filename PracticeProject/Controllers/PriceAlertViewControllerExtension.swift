@@ -11,10 +11,11 @@ import Foundation
 extension PriceAlertViewController: PriceAlertDelegate {
     
     func presentPriceAlertCreator() {
-        let vc = PriceAlertCreatorViewController()
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.delegate = self
-        self.present(vc, animated: false, completion: nil)
+        let priceAlertVC = PriceAlertCreatorViewController()
+        priceAlertVC.currentPrice = 7045
+        priceAlertVC.modalPresentationStyle = .overCurrentContext
+        priceAlertVC.delegate = self
+        self.present(priceAlertVC, animated: false, completion: nil)
     }
 
     func createPriceAlert(price: Int) {

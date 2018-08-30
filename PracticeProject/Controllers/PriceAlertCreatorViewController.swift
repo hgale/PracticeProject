@@ -8,28 +8,24 @@
 
 import UIKit
 
-class PriceAlertCreatorViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout  {
+class PriceAlertCreatorViewController: UIViewController  {
     var delegate: PriceAlertDelegate?
-
-    private let currentPrice: CGFloat = 0.0
     
-    fileprivate let reuseIdentifier = "PriceCell"
+    let reuseIdentifier = "PriceCell"
     
     fileprivate let containerView = UIView()
     fileprivate let dismissButton = UIButton()
     fileprivate let createButton = UIButton()
+    fileprivate let currentPriceView = UILabel()
 
+    var currentPrice: Int = 0
+    
     fileprivate let collectionView =  UICollectionView(frame: .zero , collectionViewLayout: UICollectionViewFlowLayout())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
         view.isOpaque = false
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func loadView() {
@@ -79,28 +75,20 @@ class PriceAlertCreatorViewController: UIViewController, UICollectionViewDelegat
             collectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:-margin),
             collectionView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier:0.30),
         ])
-        /*
-        // Pin button to bototm of the view minus a margin
-        viewConstraints.append(alertButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant:-margin))
-        // Set its start/end position to the views width minus a margin
-        viewConstraints.append(alertButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant:margin))
-        viewConstraints.append(alertButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant:-margin))
-        // Set its height to 15% of the views height
-        viewConstraints.append(alertButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier:0.15))
-        // Stack subtitle on top of the view minus a margin
-        viewConstraints.append(subTitleView.bottomAnchor.constraint(equalTo: alertButton.topAnchor, constant: -margin))
-        // Set width to be the width of the screen minus double the margin
-        viewConstraints.append(subTitleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant:(margin * 2)))
-        viewConstraints.append(subTitleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant:(-margin * 2)))
-        // Set height to be same as the buttons, aka, 15% of the screen
-        viewConstraints.append(subTitleView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier:0.15))
-        */
-        // Title New price Alert
-        // Current Price
-        // Below line price line above
-        // Horizontal scrolling price picker
-        // Create button.
+
+        currentPriceView.text = String(currentPrice)
+        currentPriceView.font = UIFont.systemFont(ofSize: 20)
+        currentPriceView.textColor = .white
+        currentPriceView.textAlignment = .center
+        currentPriceView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(currentPriceView)
         
+        NSLayoutConstraint.activate([
+            currentPriceView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -margin),
+            currentPriceView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant:margin),
+            currentPriceView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:-margin),
+            currentPriceView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier:0.10),
+        ])
     }
 
     @objc func dismissVC() {
@@ -111,23 +99,5 @@ class PriceAlertCreatorViewController: UIViewController, UICollectionViewDelegat
         self.dismiss(animated: true, completion:nil)
     }
     
-    // MARK:- CollectionView
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 24;
-    }
-    
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: PriceCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
-                                                                               for: indexPath) as! PriceCollectionViewCell
-
-        cell.title = "\(indexPath.row)"
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = 80//UIScreen.main.bounds.width * 0.2
-        return CGSize(width:size, height:size)
-    }
 }
 

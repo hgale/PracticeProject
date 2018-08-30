@@ -16,6 +16,7 @@
 		8B05C6D921373D2200ABDCEF /* PriceAlertViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6D821373D2200ABDCEF /* PriceAlertViewControllerExtension.swift */; };
 		8B05C6DB21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6DA21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift */; };
 		8B05C6DD213768C500ABDCEF /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6DC213768C500ABDCEF /* PriceCollectionViewCell.swift */; };
+		8B05C6DF21377D2000ABDCEF /* PriceAlertCreatorViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6DE21377D2000ABDCEF /* PriceAlertCreatorViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		8B05C6D821373D2200ABDCEF /* PriceAlertViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAlertViewControllerExtension.swift; sourceTree = "<group>"; };
 		8B05C6DA21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAlertCreatorViewController.swift; sourceTree = "<group>"; };
 		8B05C6DC213768C500ABDCEF /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
+		8B05C6DE21377D2000ABDCEF /* PriceAlertCreatorViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAlertCreatorViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				8B05C6BA21362D9200ABDCEF /* PriceAlertViewController.swift */,
 				8B05C6D821373D2200ABDCEF /* PriceAlertViewControllerExtension.swift */,
 				8B05C6DA21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift */,
+				8B05C6DE21377D2000ABDCEF /* PriceAlertCreatorViewControllerExtension.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B05C6DF21377D2000ABDCEF /* PriceAlertCreatorViewControllerExtension.swift in Sources */,
 				8B05C6DD213768C500ABDCEF /* PriceCollectionViewCell.swift in Sources */,
 				8B05C6DB21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift in Sources */,
 				8B05C6D721373CA600ABDCEF /* PriceAlertProtocol.swift in Sources */,

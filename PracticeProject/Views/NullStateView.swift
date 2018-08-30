@@ -17,8 +17,8 @@ class NullStateView: UIView {
     var delegate: PriceAlertDelegate?
     
     fileprivate let iconView = UIView()
-    fileprivate let titleView = UITextView()
-    fileprivate let subTitleView = UITextView()
+    fileprivate let titleView = UILabel()
+    fileprivate let subTitleView = UILabel()
     fileprivate let alertButton = UIButton()
     
     fileprivate var viewConstraints = [NSLayoutConstraint]()
@@ -66,7 +66,7 @@ class NullStateView: UIView {
         titleView.textAlignment = .center
 
         subTitleView.text = subTitle
-        subTitleView.textContainer.maximumNumberOfLines = 2
+        subTitleView.numberOfLines = 2
         subTitleView.font = UIFont.systemFont(ofSize: 16)
         subTitleView.textColor = .gray
         subTitleView.textAlignment = .center

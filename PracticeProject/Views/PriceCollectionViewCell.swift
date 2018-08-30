@@ -21,7 +21,7 @@ import UIKit
 
 class PriceCollectionViewCell: UICollectionViewCell {
 
-    fileprivate let titleView = UITextView()
+    fileprivate let titleView = UILabel()
 
     fileprivate var viewConstraints = [NSLayoutConstraint]()
     
@@ -48,13 +48,11 @@ class PriceCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews()
     {
         super.layoutSubviews()
-        
         self.setup()
     }
     
     func setup() {
-//        titleView.text = "1"
-        titleView.font = UIFont.systemFont(ofSize: 20)
+        titleView.font = UIFont.systemFont(ofSize: 16)
         titleView.textColor = .black
         titleView.textAlignment = .center
         contentView.addSubview(titleView)
@@ -72,7 +70,6 @@ class PriceCollectionViewCell: UICollectionViewCell {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        print("Cell layout")
         NSLayoutConstraint.activate(viewConstraints)
     }
     
