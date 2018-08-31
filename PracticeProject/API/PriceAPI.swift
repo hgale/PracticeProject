@@ -23,9 +23,8 @@ final class PriceAPI {
     private let INTERVAL: Double = 5
     typealias JSONDictionary = [String: Any]
     
-    typealias PriceResultCallBack = (BPIPrice) -> ()
-    var priceObserver: PriceResultCallBack?
-    var currentPrice: BPIPrice?
+    typealias PriceResult = (BPIPrice) -> ()
+    var currentPrice =  BPIPrice(code: "", desc: "", rate: 0.0, symbol: "")
 
     static let shared = PriceAPI()
     
@@ -34,7 +33,7 @@ final class PriceAPI {
     private let defaultSession = URLSession(configuration: .default)
     private var pollPriceDataTask: URLSessionDataTask?
     
-    private var isOnline = false
+    private var loading = false
     private var isPolling = false
     
     func startPolling() {
@@ -48,31 +47,38 @@ final class PriceAPI {
     }
 
     @objc func pollPricesAPI() {
-        print("Polling!!!")
+        requestPrice(completion: {(price: BPIPrice) -> Void in
+            print("Poll currentPrice is: ", price)
+        })
+    }
+
+    func requestPrice(completion: @escaping PriceResult) {
         pollPriceDataTask?.cancel()
+        loading = true
         if var urlComponents = URLComponents(string: API_URL) {
             guard let url = urlComponents.url else { return }
             print("Attempting to make request with the following url")
             print("url : ", url)
             pollPriceDataTask = defaultSession.dataTask(with: url) { data, response, error in
                 defer { self.pollPriceDataTask = nil }
-
+                self.loading = false
                 if let error = error {
                     let errorMessage = "PollPriceDataTask error: " + error.localizedDescription + "\n"
                     print(errorMessage)
-                    self.isOnline = false
                 } else if let data = data,
                     let response = response as? HTTPURLResponse,
                     response.statusCode == 200 {
                     self.updatePriceFromResult(data)
-
+                    DispatchQueue.main.async {
+                        completion(self.currentPrice)
+                    }
                 }
             }
-
+            
             pollPriceDataTask?.resume()
         }
     }
-    
+
     fileprivate func updatePriceFromResult(_ data: Data) {
         var response: JSONDictionary?
         do {
@@ -98,17 +104,7 @@ final class PriceAPI {
             print(errorMessage)
             return
         }
-        let currentPrice = BPIPrice(code: code, desc: description, rate: rate.floatValue, symbol: symbol);
-        self.broadCastCurrentPrice(price: currentPrice)
-
-    }
-    
-    fileprivate func broadCastCurrentPrice(price: BPIPrice) {
-        print("currentPrice is ", price)
-        DispatchQueue.main.async {
-            self.currentPrice = price
-            self.priceObserver?(price)
-        }
+        currentPrice = BPIPrice(code: code, desc: description, rate: rate.floatValue, symbol: symbol);
     }
 }
 
