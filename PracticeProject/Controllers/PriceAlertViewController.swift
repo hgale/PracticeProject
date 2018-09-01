@@ -31,9 +31,10 @@ class PriceAlertViewController: UIViewController {
     // MARK:- Add the subviews
 
     func addViews() {
-        nullStateView = NullStateView(title: "Never miss an opportunity",
-                                      subTitle: "We'll send you notifications when prices go above or below your targets",
-                                      buttonText: "Create Price Alert")
+        nullStateView = NullStateView(
+            title: "Never miss an opportunity",
+            subTitle: "We'll send you notifications when prices go above or below your targets",
+            buttonText: "Create Price Alert")
         nullStateView.delegate = self
         view.addSubview(nullStateView)
     }
@@ -45,7 +46,8 @@ class PriceAlertViewController: UIViewController {
 
         let margin : CGFloat = 20
         let screenWidth = UIScreen.main.bounds.width
-
+        // Get rid of screen width, do the leading, trailing thing instead.
+        
         // center screen and set its width/height to be based on screenWidth - margin
         NSLayoutConstraint.activate([
             nullStateView.widthAnchor.constraint(equalToConstant: (screenWidth - margin)),
@@ -53,6 +55,26 @@ class PriceAlertViewController: UIViewController {
             nullStateView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             nullStateView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
         ])
+    }
+}
+
+// Extension is like a category. Used to break up class
+// to give it more, conformance to protocols inside the same file.
+// Make the files a bit smaller.
+extension PriceAlertViewController: PriceAlertDelegate {
+    
+    func presentPriceAlertCreator() {
+        let priceAlertVC = PriceAlertCreatorViewController()
+        let price = PriceAPI.shared.currentPrice
+        priceAlertVC.currentPrice = price.rate
+        priceAlertVC.priceIncrement = 10
+        priceAlertVC.modalPresentationStyle = .overCurrentContext
+        priceAlertVC.delegate = self
+        self.present(priceAlertVC, animated: true, completion: nil)
+    }
+    
+    func createPriceAlert(price: Int) {
+        print("createPriceAlert with ", price)
     }
 }
 

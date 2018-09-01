@@ -15,13 +15,17 @@ class NullStateView: UIView {
     let iconSize: CGFloat = 90
     
     var delegate: PriceAlertDelegate?
+    // private used to mean access by things in the same file, swift 3 only accessed by things in
+    // the same class.
+    // fileprivate access things in this file, including outside of this class.
+    // extensions in the same file can access private members, fileprivate means other things
+    // beside extensions can use it.
+    private let iconView = UIView()
+    private let titleView = UILabel()
+    private let subTitleView = UILabel()
+    private let alertButton = UIButton()
     
-    fileprivate let iconView = UIView()
-    fileprivate let titleView = UILabel()
-    fileprivate let subTitleView = UILabel()
-    fileprivate let alertButton = UIButton()
-    
-    fileprivate var viewConstraints = [NSLayoutConstraint]()
+    private var viewConstraints = [NSLayoutConstraint]()
     
     private let title: String
     private let subTitle: String
@@ -32,27 +36,18 @@ class NullStateView: UIView {
         self.subTitle = subTitle
         self.buttonText = buttonText
 
-        super.init(frame: CGRect.zero)
-    }
-    
-    override func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
+        super.init(frame: .zero)
         setup()
         setupConstraints()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         return nil
     }
     
-    override func layoutSubviews()
-    {
-        super.layoutSubviews()
-        
-        self.setup()
-    }
-    
     func setup() {
+        layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+
         iconView.backgroundColor = .white
         iconView.layer.cornerRadius = iconSize / 2
 
@@ -91,6 +86,12 @@ class NullStateView: UIView {
         subTitleView.translatesAutoresizingMaskIntoConstraints = false
         alertButton.translatesAutoresizingMaskIntoConstraints = false
 
+        // Look at UIStackView
+        // Read more about this.
+        // https://developer.apple.com/documentation/uikit/uistackview
+        // Co
+        viewConstraints.append(alertButton.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor))
+        
         let margin: CGFloat = 20;
         // Pin button to bototm of the view minus a margin
         viewConstraints.append(alertButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant:-margin))
@@ -120,10 +121,6 @@ class NullStateView: UIView {
         viewConstraints.append(iconView.centerXAnchor.constraint(equalTo: self.centerXAnchor))
         viewConstraints.append(iconView.heightAnchor.constraint(equalToConstant:iconSize))
         viewConstraints.append(iconView.widthAnchor.constraint(equalTo: iconView.heightAnchor))
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
         NSLayoutConstraint.activate(viewConstraints)
     }
 

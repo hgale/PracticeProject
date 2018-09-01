@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Move into same file
 extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
     // MARK:- Utility

@@ -12,31 +12,28 @@ class PriceAlertCreatorViewController: UIViewController  {
     var delegate: PriceAlertDelegate?
     
     let reuseIdentifier = "PriceCell"
-    
-    fileprivate let containerView = UIView()
-    fileprivate let dismissButton = UIButton()
-    fileprivate let createButton = UIButton()
-    fileprivate let collectionView =  UICollectionView(frame: .zero , collectionViewLayout: UICollectionViewFlowLayout())
+    // Use private everywhere until the compiler complains
+    private let containerView = UIView()
+    private let dismissButton = UIButton()
+    private let createButton = UIButton()
+    private let collectionView =  UICollectionView(frame: .zero , collectionViewLayout: UICollectionViewFlowLayout())
     let currentPriceView = UILabel()
 
-    fileprivate var viewConstraints = [NSLayoutConstraint]()
+    private var viewConstraints = [NSLayoutConstraint]()
     
-    var selectedPrice: Int = 0
-    var currentPrice: Float = 0
-    var priceIncrement: Int = 5
+    public var selectedPrice = 0
+    public var currentPrice: Float = 0
+    public var priceIncrement = 5
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
         view.isOpaque = false
-    }
-    
-    override func loadView() {
-        super.loadView()
         addViews()
         setupConstraints()
     }
+    // Only use loadView if you are replacing the view itself
 
     // MARK:- Add the subviews
 
@@ -81,6 +78,7 @@ class PriceAlertCreatorViewController: UIViewController  {
         // Create UI that covers halft the screen
         // Add x button to the top
         let margin : CGFloat = 20
+        // Get rid of screenWidth so you never hard code any values
         let screenWidth = UIScreen.main.bounds.width
     
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +86,7 @@ class PriceAlertCreatorViewController: UIViewController  {
         currentPriceView.translatesAutoresizingMaskIntoConstraints = false
         createButton.translatesAutoresizingMaskIntoConstraints = false
 
+        // Use layoutMargins, 
         NSLayoutConstraint.activate([
             // center screen background and set its width/height to be based on screenWidth - margin
             containerView.widthAnchor.constraint(equalToConstant: (screenWidth - margin)),
