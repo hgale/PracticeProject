@@ -11,16 +11,16 @@ import UIKit
 class PriceAlertCreatorViewController: UIViewController  {
     var delegate: PriceAlertDelegate?
     
-    let reuseIdentifier = "PriceCell"
+    private let reuseIdentifier = "PriceCell"
     // Use private everywhere until the compiler complains
     private let containerView = UIView()
     private let dismissButton = UIButton()
     private let createButton = UIButton()
     private let collectionView =  UICollectionView(frame: .zero , collectionViewLayout: UICollectionViewFlowLayout())
-    let currentPriceView = UILabel()
+    private let currentPriceView = UILabel()
 
     private var viewConstraints = [NSLayoutConstraint]()
-    
+    // Maybe move these into some kind of setup function
     public var selectedPrice = 0
     public var currentPrice: Float = 0
     public var priceIncrement = 5
@@ -116,5 +116,54 @@ class PriceAlertCreatorViewController: UIViewController  {
             currentPriceView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier:0.10),
         ])
     }    
+}
+
+extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+
+    // MARK:- Utility
+
+    func calculatePrice(price : Float, increment: Int, index: Int) -> Int {
+        let cellPrice = Int(price) + (index * increment)
+        return cellPrice
+    }
+
+    // MARK:- CollectionView
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 24;
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: PriceCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
+                                                                               for: indexPath) as! PriceCollectionViewCell
+
+        let cellPrice = calculatePrice(price: currentPrice, increment: priceIncrement, index: indexPath.row)
+        cell.title = "\(cellPrice)"
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = 90
+        return CGSize(width:size, height:size)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cellPrice = calculatePrice(price: currentPrice, increment: priceIncrement, index: indexPath.row)
+        // TODO: Make this nicer with a setter
+        selectedPrice = cellPrice
+        currentPriceView.text = String(selectedPrice)
+        print("Selected: \(cellPrice)")
+    }
+
+    // MARK:- Buttons
+
+    @objc func dismissVC() {
+        self.dismiss(animated: true, completion:nil)
+    }
+
+    @objc func createPrice() {
+        self.delegate?.createPriceAlert(price: selectedPrice)
+        self.dismiss(animated: true, completion:nil)
+    }
 }
 

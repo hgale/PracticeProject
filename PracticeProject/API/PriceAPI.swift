@@ -10,37 +10,15 @@ import Foundation
 
 final class PriceAPI {
     private let PRICE_API_URL = "https://api.coindesk.com/v1/bpi/currentprice.json"
-    private let INTERVAL: Double = 5
-    typealias JSONDictionary = [String: Any]
     
     typealias PriceResult = (BPIPrice) -> ()
-    var currentPrice =  BPIPrice(code: "", description: "", rate: 0.0, symbol: "")
     
     static let shared = PriceAPI()
-    
-    private var pollingTimer: Timer!
     
     private let defaultSession = URLSession(configuration: .default)
     private var pollPriceDataTask: URLSessionDataTask?
     
     private var loading = false
-    private var isPolling = false
-    
-    func startPolling() {
-        isPolling = true
-        pollingTimer = Timer.scheduledTimer(timeInterval: INTERVAL, target: self, selector: #selector(pollPricesAPI), userInfo: nil, repeats: true)
-    }
-    
-    func stopPolling() {
-        isPolling = false
-        pollingTimer.invalidate()
-    }
-
-    @objc func pollPricesAPI() {
-        requestPrice(completion: {(price: BPIPrice) -> Void in
-            print("Poll currentPrice is: ", price)
-        })
-    }
 
     func requestPrice(completion: @escaping PriceResult)  {
         pollPriceDataTask?.cancel()
@@ -53,9 +31,9 @@ final class PriceAPI {
             do {
                 let decoder = JSONDecoder()
                 let prices = try decoder.decode(Prices.self, from: data)
-                self.currentPrice = prices.bpi.usd
+                let price = prices.bpi.usd
                 DispatchQueue.main.async {
-                    completion(self.currentPrice)
+                    completion(price)
                 }
                 
             } catch let err {
@@ -78,19 +56,6 @@ final class PriceAPI {
             case usd = "USD"
             case eur = "EUR"
             case gbp = "GBP"
-        }
-    }
-
-    struct BPIPrice : Codable {
-        let code: String
-        let description: String
-        let rate: Float
-        let symbol: String
-        enum CodingKeys : String, CodingKey {
-            case code
-            case description
-            case rate = "rate_float"
-            case symbol
         }
     }
 }

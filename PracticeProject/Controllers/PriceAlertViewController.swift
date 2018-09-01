@@ -19,7 +19,6 @@ class PriceAlertViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func loadView() {
@@ -65,7 +64,7 @@ extension PriceAlertViewController: PriceAlertDelegate {
     
     func presentPriceAlertCreator() {
         let priceAlertVC = PriceAlertCreatorViewController()
-        let price = PriceAPI.shared.currentPrice
+        let price = PollPrice.shared.currentPrice
         priceAlertVC.currentPrice = price.rate
         priceAlertVC.priceIncrement = 10
         priceAlertVC.modalPresentationStyle = .overCurrentContext
