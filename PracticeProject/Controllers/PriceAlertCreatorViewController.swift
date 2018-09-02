@@ -59,7 +59,7 @@ class PriceAlertCreatorViewController: UIViewController  {
         
         currentPriceView.text = String(Int(currentPrice))
         currentPriceView.font = UIFont.systemFont(ofSize: 20)
-        currentPriceView.textColor = .white
+        currentPriceView.textColor = UIColor.AppTheme.blue
         currentPriceView.textAlignment = .center
         containerView.addSubview(currentPriceView)
         

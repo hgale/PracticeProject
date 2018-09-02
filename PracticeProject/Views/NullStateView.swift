@@ -21,6 +21,7 @@ class NullStateView: UIView {
     // extensions in the same file can access private members, fileprivate means other things
     // beside extensions can use it.
     private let iconView = UIView()
+    private let iconLabel = UILabel()
     private let titleView = UILabel()
     private let subTitleView = UILabel()
     private let alertButton = UIButton()
@@ -55,6 +56,10 @@ class NullStateView: UIView {
         iconView.layer.borderColor = UIColor.gray.cgColor
         iconView.layer.borderWidth = 1.5
 
+        iconLabel.text = "\u{1F514}"
+        iconLabel.font = UIFont.systemFont(ofSize: 26)
+        iconView.addSubview(iconLabel)
+
         titleView.text = title
         titleView.font = UIFont.systemFont(ofSize: 20)
         titleView.textColor = .black
@@ -82,10 +87,11 @@ class NullStateView: UIView {
 
     func setupConstraints() {
         iconView.translatesAutoresizingMaskIntoConstraints = false
+        iconLabel.translatesAutoresizingMaskIntoConstraints = false
         titleView.translatesAutoresizingMaskIntoConstraints = false
         subTitleView.translatesAutoresizingMaskIntoConstraints = false
         alertButton.translatesAutoresizingMaskIntoConstraints = false
-
+        
         // Look at UIStackView
         // Read more about this.
         // https://developer.apple.com/documentation/uikit/uistackview
@@ -121,6 +127,10 @@ class NullStateView: UIView {
         viewConstraints.append(iconView.centerXAnchor.constraint(equalTo: self.centerXAnchor))
         viewConstraints.append(iconView.heightAnchor.constraint(equalToConstant:iconSize))
         viewConstraints.append(iconView.widthAnchor.constraint(equalTo: iconView.heightAnchor))
+        
+        viewConstraints.append(iconLabel.centerXAnchor.constraint(equalTo: iconView.centerXAnchor))
+        viewConstraints.append(iconLabel.centerYAnchor.constraint(equalTo: iconView.centerYAnchor))
+        
         NSLayoutConstraint.activate(viewConstraints)
     }
 
