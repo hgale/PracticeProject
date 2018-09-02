@@ -38,7 +38,7 @@ class PriceAlertCreatorViewController: UIViewController  {
     // MARK:- Add the subviews
 
     func addViews() {
-        containerView.backgroundColor = .purple
+        containerView.backgroundColor = .white
         view.addSubview(containerView)
         
         let layout = UICollectionViewFlowLayout()
@@ -52,7 +52,7 @@ class PriceAlertCreatorViewController: UIViewController  {
         containerView.addSubview(collectionView)
 
         dismissButton.backgroundColor = .clear
-        dismissButton.titleLabel?.textColor = .white
+        dismissButton.setTitleColor(UIColor.AppTheme.blue, for: .normal)
         dismissButton.setTitle("X", for: .normal)
         dismissButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         containerView.addSubview(dismissButton)

@@ -8,7 +8,9 @@
 
 import Foundation
 
-// Targe price
-// On/Off
-// Date
-// Above/Below
+struct PriceAlert : Codable {
+    let on: Bool
+    let above: Bool
+    let created: Date
+    let targetPrice: Float
+}

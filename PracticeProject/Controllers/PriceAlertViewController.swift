@@ -10,11 +10,12 @@ import UIKit
 
 class PriceAlertViewController: UIViewController {
 
-    fileprivate var nullStateView: NullStateView!
+    private var nullStateView: NullStateView!
+    private let priceAlerts = [PriceAlert]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
+        self.view.backgroundColor = UIColor.AppTheme.background
     }
 
     override func didReceiveMemoryWarning() {

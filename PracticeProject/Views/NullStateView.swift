@@ -66,7 +66,7 @@ class NullStateView: UIView {
         subTitleView.textColor = .gray
         subTitleView.textAlignment = .center
         
-        alertButton.backgroundColor = .blue
+        alertButton.backgroundColor = UIColor.AppTheme.blue
         alertButton.titleLabel?.textColor = .white
         alertButton.layer.cornerRadius = 5
         alertButton.clipsToBounds = true

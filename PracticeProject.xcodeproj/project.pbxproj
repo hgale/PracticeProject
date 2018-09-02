@@ -19,6 +19,7 @@
 		8B05C6F02138C45400ABDCEF /* PriceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05C6EF2138C45400ABDCEF /* PriceAlert.swift */; };
 		8BBCC6E2213B51FC00F7F602 /* PollPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCC6E1213B51FC00F7F602 /* PollPrice.swift */; };
 		8BBCC6E4213B52F100F7F602 /* BPIPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCC6E3213B52F100F7F602 /* BPIPrice.swift */; };
+		8BBCC6E7213C4E6200F7F602 /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCC6E6213C4E6200F7F602 /* colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		8B05C6EF2138C45400ABDCEF /* PriceAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAlert.swift; sourceTree = "<group>"; };
 		8BBCC6E1213B51FC00F7F602 /* PollPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollPrice.swift; sourceTree = "<group>"; };
 		8BBCC6E3213B52F100F7F602 /* BPIPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPIPrice.swift; sourceTree = "<group>"; };
+		8BBCC6E6213C4E6200F7F602 /* colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		8B05C6B721362D9200ABDCEF /* PracticeProject */ = {
 			isa = PBXGroup;
 			children = (
+				8BBCC6E5213C4E4C00F7F602 /* Utils */,
 				8B05C6EC2138959100ABDCEF /* Models */,
 				8B05C6E6213887C600ABDCEF /* API */,
 				8B05C6D521373C8A00ABDCEF /* Protocols */,
@@ -123,6 +126,14 @@
 				8BBCC6E3213B52F100F7F602 /* BPIPrice.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8BBCC6E5213C4E4C00F7F602 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8BBCC6E6213C4E6200F7F602 /* colors.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 				8B05C6DB21373F2D00ABDCEF /* PriceAlertCreatorViewController.swift in Sources */,
 				8B05C6D721373CA600ABDCEF /* PriceAlertProtocol.swift in Sources */,
 				8B05C6BB21362D9200ABDCEF /* PriceAlertViewController.swift in Sources */,
+				8BBCC6E7213C4E6200F7F602 /* colors.swift in Sources */,
 				8B05C6D32137196C00ABDCEF /* NullStateView.swift in Sources */,
 				8B05C6E8213887D900ABDCEF /* PriceAPI.swift in Sources */,
 				8B05C6F02138C45400ABDCEF /* PriceAlert.swift in Sources */,
