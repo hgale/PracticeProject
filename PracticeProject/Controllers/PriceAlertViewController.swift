@@ -12,10 +12,18 @@ class PriceAlertViewController: UIViewController {
 
     private var nullStateView: NullStateView!
     private let priceAlerts = [PriceAlert]()
-    
+    //
+    let rightBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(displayPriceAlert))
+        barButtonItem.tintColor = .white
+        return barButtonItem
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.AppTheme.background
+        self.title = "Alerts"
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +70,11 @@ class PriceAlertViewController: UIViewController {
 // to give it more, conformance to protocols inside the same file.
 // Make the files a bit smaller.
 extension PriceAlertViewController: PriceAlertDelegate {
-    
+
+    @objc func displayPriceAlert(sender: UIBarButtonItem) {
+        self.presentPriceAlertCreator()
+    }
+
     func presentPriceAlertCreator() {
         let priceAlertVC = PriceAlertCreatorViewController()
         let price = PollPrice.shared.currentPrice

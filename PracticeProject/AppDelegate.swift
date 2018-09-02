@@ -13,12 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var navigationController: UINavigationController?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         PollPrice.shared.startPolling()
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         let alertViewController = PriceAlertViewController()
-        window!.rootViewController = alertViewController
+        navigationController = UINavigationController(rootViewController: alertViewController)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        UINavigationBar.appearance().barTintColor = UIColor.AppTheme.blue
+        window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
         return true
     }
