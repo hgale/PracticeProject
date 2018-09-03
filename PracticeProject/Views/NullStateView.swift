@@ -47,8 +47,6 @@ class NullStateView: UIView {
     }
     
     func setup() {
-        layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-
         iconView.backgroundColor = .white
         iconView.layer.cornerRadius = iconSize / 2
 
@@ -98,32 +96,32 @@ class NullStateView: UIView {
         // Co
         viewConstraints.append(alertButton.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor))
         
-        let margin: CGFloat = 20;
+        
         // Pin button to bototm of the view minus a margin
-        viewConstraints.append(alertButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant:-margin))
+        viewConstraints.append(alertButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant:UIEdgeInsets.AppTheme.margins.bottom))
         // Set its start/end position to the views width minus a margin
-        viewConstraints.append(alertButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant:margin))
-        viewConstraints.append(alertButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant:-margin))
+        viewConstraints.append(alertButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant:UIEdgeInsets.AppTheme.margins.left))
+        viewConstraints.append(alertButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant:-UIEdgeInsets.AppTheme.margins.right))
         // Set its height to 15% of the views height
         viewConstraints.append(alertButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier:0.15))
         // Stack subtitle on top of the view minus a margin
-        viewConstraints.append(subTitleView.bottomAnchor.constraint(equalTo: alertButton.topAnchor, constant: -margin))
+        viewConstraints.append(subTitleView.bottomAnchor.constraint(equalTo: alertButton.topAnchor, constant: -UIEdgeInsets.AppTheme.margins.bottom))
         // Set width to be the width of the screen minus double the margin
-        viewConstraints.append(subTitleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant:(margin * 2)))
-        viewConstraints.append(subTitleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant:(-margin * 2)))
+        viewConstraints.append(subTitleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant:(UIEdgeInsets.AppTheme.margins.left * 2)))
+        viewConstraints.append(subTitleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant:(-UIEdgeInsets.AppTheme.margins.right * 2)))
         // Set height to be same as the buttons, aka, 15% of the screen
         viewConstraints.append(subTitleView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier:0.15))
         
         // Stack title on top of the subtitle minus a margin
-        viewConstraints.append(titleView.bottomAnchor.constraint(equalTo: subTitleView.topAnchor, constant: -margin))
+        viewConstraints.append(titleView.bottomAnchor.constraint(equalTo: subTitleView.topAnchor, constant: -UIEdgeInsets.AppTheme.margins.top))
         // Set width to be the width of the screen minus double the margin
-        viewConstraints.append(titleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant:(margin * 2)))
-        viewConstraints.append(titleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant:(-margin * 2)))
+        viewConstraints.append(titleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant:(UIEdgeInsets.AppTheme.margins.left * 2)))
+        viewConstraints.append(titleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant:(-UIEdgeInsets.AppTheme.margins.right * 2)))
         // Set height to be same as the buttons, aka, 15% of the screen
         viewConstraints.append(titleView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier:0.15))
         
         // Stack icon on top of the title minus a margin
-        viewConstraints.append(iconView.bottomAnchor.constraint(equalTo: titleView.topAnchor, constant: -margin))
+        viewConstraints.append(iconView.bottomAnchor.constraint(equalTo: titleView.topAnchor, constant: -UIEdgeInsets.AppTheme.margins.bottom))
         viewConstraints.append(iconView.centerXAnchor.constraint(equalTo: self.centerXAnchor))
         viewConstraints.append(iconView.heightAnchor.constraint(equalToConstant:iconSize))
         viewConstraints.append(iconView.widthAnchor.constraint(equalTo: iconView.heightAnchor))

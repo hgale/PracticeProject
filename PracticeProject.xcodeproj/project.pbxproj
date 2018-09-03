@@ -20,6 +20,7 @@
 		8BBCC6E2213B51FC00F7F602 /* PollPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCC6E1213B51FC00F7F602 /* PollPrice.swift */; };
 		8BBCC6E4213B52F100F7F602 /* BPIPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCC6E3213B52F100F7F602 /* BPIPrice.swift */; };
 		8BBCC6E7213C4E6200F7F602 /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCC6E6213C4E6200F7F602 /* colors.swift */; };
+		8BBCC6E9213DB4B800F7F602 /* margins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCC6E8213DB4B800F7F602 /* margins.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		8BBCC6E1213B51FC00F7F602 /* PollPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollPrice.swift; sourceTree = "<group>"; };
 		8BBCC6E3213B52F100F7F602 /* BPIPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPIPrice.swift; sourceTree = "<group>"; };
 		8BBCC6E6213C4E6200F7F602 /* colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colors.swift; sourceTree = "<group>"; };
+		8BBCC6E8213DB4B800F7F602 /* margins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = margins.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				8BBCC6E6213C4E6200F7F602 /* colors.swift */,
+				8BBCC6E8213DB4B800F7F602 /* margins.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				8BBCC6E7213C4E6200F7F602 /* colors.swift in Sources */,
 				8B05C6D32137196C00ABDCEF /* NullStateView.swift in Sources */,
 				8B05C6E8213887D900ABDCEF /* PriceAPI.swift in Sources */,
+				8BBCC6E9213DB4B800F7F602 /* margins.swift in Sources */,
 				8B05C6F02138C45400ABDCEF /* PriceAlert.swift in Sources */,
 				8B05C6B921362D9200ABDCEF /* AppDelegate.swift in Sources */,
 			);

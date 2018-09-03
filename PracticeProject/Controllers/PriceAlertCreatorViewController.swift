@@ -80,7 +80,6 @@ class PriceAlertCreatorViewController: UIViewController  {
     func setupConstraints() {
         // Create UI that covers halft the screen
         // Add x button to the top
-        let margin : CGFloat = 20
         // Get rid of screenWidth so you never hard code any values
         let screenWidth = UIScreen.main.bounds.width
     
@@ -92,30 +91,30 @@ class PriceAlertCreatorViewController: UIViewController  {
         // Use layoutMargins, 
         NSLayoutConstraint.activate([
             // center screen background and set its width/height to be based on screenWidth - margin
-            containerView.widthAnchor.constraint(equalToConstant: (screenWidth - margin)),
+            containerView.widthAnchor.constraint(equalToConstant: (screenWidth - UIEdgeInsets.AppTheme.margins.left)),
             containerView.widthAnchor.constraint(equalTo: containerView.heightAnchor),
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             // Align dismiss button with top right of screen
-            dismissButton.topAnchor.constraint(equalTo:containerView.topAnchor, constant: margin),
-            dismissButton.trailingAnchor.constraint(equalTo:containerView.trailingAnchor, constant: -margin),
+            dismissButton.topAnchor.constraint(equalTo:containerView.topAnchor, constant: UIEdgeInsets.AppTheme.margins.top),
+            dismissButton.trailingAnchor.constraint(equalTo:containerView.trailingAnchor, constant: -UIEdgeInsets.AppTheme.margins.right),
             // Pint create button to bottom of containerview minus a margin
-            createButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant:-margin),
+            createButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant:-UIEdgeInsets.AppTheme.margins.left),
             // Set its start/end position to the views width minus a margin
-            createButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant:margin),
-            createButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:-margin),
+            createButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant:UIEdgeInsets.AppTheme.margins.left),
+            createButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:-UIEdgeInsets.AppTheme.margins.right),
             // Set createButtons height to 15% of the containerViews height
             createButton.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier:0.15),
             // Stack collectionView on top of create button
-            collectionView.bottomAnchor.constraint(equalTo: createButton.topAnchor, constant: -margin),
-            collectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant:margin),
-            collectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:-margin),
+            collectionView.bottomAnchor.constraint(equalTo: createButton.topAnchor, constant: -UIEdgeInsets.AppTheme.margins.bottom),
+            collectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant:UIEdgeInsets.AppTheme.margins.left),
+            collectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:-UIEdgeInsets.AppTheme.margins.right),
             collectionView.heightAnchor.constraint(equalTo: containerView.heightAnchor,
                                                    multiplier:0.30),
             // Display current price
-            currentPriceView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -margin),
-            currentPriceView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant:margin),
-            currentPriceView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:-margin),
+            currentPriceView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -UIEdgeInsets.AppTheme.margins.bottom),
+            currentPriceView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant:UIEdgeInsets.AppTheme.margins.left),
+            currentPriceView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:-UIEdgeInsets.AppTheme.margins.right),
             currentPriceView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier:0.10),
         ])
     }    
