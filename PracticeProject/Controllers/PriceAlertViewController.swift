@@ -11,7 +11,7 @@ import UIKit
 class PriceAlertViewController: UIViewController {
 
     private var nullStateView: NullStateView!
-    private let priceAlerts = [PriceAlert]()
+    private var priceAlerts = [PriceAlert]()
     //
     let rightBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(displayPriceAlert))
@@ -85,8 +85,9 @@ extension PriceAlertViewController: PriceAlertDelegate {
         self.present(priceAlertVC, animated: true, completion: nil)
     }
     
-    func createPriceAlert(price: Int) {
-        print("createPriceAlert with ", price)
+    func createPriceAlert(priceAlert: PriceAlert) {
+        print("createPriceAlert hit with ", priceAlert)
+        priceAlerts.append(priceAlert)
     }
 }
 

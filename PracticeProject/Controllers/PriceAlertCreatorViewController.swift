@@ -21,7 +21,7 @@ class PriceAlertCreatorViewController: UIViewController  {
 
     private var viewConstraints = [NSLayoutConstraint]()
     // Maybe move these into some kind of setup function
-    public var selectedPrice = 0
+    public var selectedIndex: Float = 0
     public var currentPrice: Float = 0
     public var priceIncrement = 5
     
@@ -63,11 +63,14 @@ class PriceAlertCreatorViewController: UIViewController  {
         currentPriceView.textAlignment = .center
         containerView.addSubview(currentPriceView)
         
-        createButton.backgroundColor = .blue
+        createButton.backgroundColor = UIColor.AppTheme.blue
+        createButton.alpha = 0.5
         createButton.titleLabel?.textColor = .white
         createButton.layer.cornerRadius = 5
         createButton.clipsToBounds = true
         createButton.setTitle("Create Alert", for: .normal)
+        createButton.setTitleColor(.gray, for: .disabled)
+        createButton.isUserInteractionEnabled = false
         createButton.addTarget(self, action: #selector(self.createPrice), for: .touchUpInside)
         containerView.addSubview(createButton)
     }
@@ -122,8 +125,8 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
 
     // MARK:- Utility
 
-    func calculatePrice(price : Float, increment: Int, index: Int) -> Int {
-        let cellPrice = Int(price) + (index * increment)
+    func calculatePrice(price : Float, increment: Int, index: Int) -> Float {
+        let cellPrice = Float(price) + Float(index * increment)
         return cellPrice
     }
 
@@ -150,8 +153,10 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cellPrice = calculatePrice(price: currentPrice, increment: priceIncrement, index: indexPath.row)
         // TODO: Make this nicer with a setter
-        selectedPrice = cellPrice
-        currentPriceView.text = String(selectedPrice)
+        selectedIndex = cellPrice
+        currentPriceView.text = String(selectedIndex)
+        createButton.isUserInteractionEnabled = true
+        createButton.alpha = 1
         print("Selected: \(cellPrice)")
     }
 
@@ -162,7 +167,10 @@ extension PriceAlertCreatorViewController:  UICollectionViewDelegate, UICollecti
     }
 
     @objc func createPrice() {
-        self.delegate?.createPriceAlert(price: selectedPrice)
+        let targetPrice = calculatePrice(price: currentPrice, increment: priceIncrement, index: Int(selectedIndex))
+        let above: Bool  = targetPrice > currentPrice
+        let price = PriceAlert(on: true, above: above, created: Date(), targetPrice: targetPrice)
+        self.delegate?.createPriceAlert(priceAlert: price)
         self.dismiss(animated: true, completion:nil)
     }
 }

@@ -10,5 +10,5 @@ import Foundation
 
 protocol PriceAlertDelegate {
     func presentPriceAlertCreator()
-    func createPriceAlert(price: Int)
+    func createPriceAlert(priceAlert: PriceAlert)
 }
